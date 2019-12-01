@@ -28,9 +28,10 @@
     docker-compose build
     docker-compose up -d
     ```
-4. If you want to see the database, then open a browser and paste the URL ( http://localhost:8081/db/News_feed )
+4. Check web site on url http://127.0.0.1/?url=https%3A%2F%2Fnews.tut.by%2Frss&limit=10&date=20191201 
+5. If you want to see the database, then open a browser and paste the URL ( http://localhost:8081/db/News_feed )
 
-5. If you want view the PDF file, execute the following commands:
+6. If you want view the PDF file, execute the following commands:
     ```
         docker exec flask -it bash
         ls
