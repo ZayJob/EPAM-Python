@@ -1,31 +1,29 @@
 from app import app
-from pymongo import MongoClient
-from flask import render_template, redirect, request
+from flask import render_template, request
 from typing import Dict, Any
+from data.app.application import Application
 
 
 @app.route("/")
 def index():
-    client = MongoClient("mongo", 27017)
-    db = client["News_feeds"]
-    collection = db["News"]
 
-    req = request.args
-
-    collection.insert({"args": parse_args_from_request(req)})
+    application = Application(parse_args_from_request())
+    application.run_app()
 
     return render_template('index.html')
 
 
-def parse_args_from_request(req):
+@app.route("/news")
+def news():
+
+    return render_template('news.html')
+
+
+def parse_args_from_request() -> Dict[str, Any]:
     dict_args = {
-        "source": req.get('url'),
-        "limit": req.get('limit'),
-        "date": req.get('date'),
-        "to_pdf": req.get('to_pdf')
+        "source": request.args.get('url'),
+        "limit": int(request.args.get('limit')),
+        "date": request.args.get('date'),
+        "to_pdf": bool(request.args.get('to_pdf'))
     }
     return dict_args
-
-
-def run():
-    pass
