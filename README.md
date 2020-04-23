@@ -1,6 +1,6 @@
 # Iteration 6
 
-Гsed technologies such as Flask, nginx, MongoDB, Mongo-Express, Docker-compose.
+Used technologies such as Flask, nginx, MongoDB, Mongo-Express, Docker-compose.
 
 ## Install RSS reader (work)
 1. Create docker container:
